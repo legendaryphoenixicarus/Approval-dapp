@@ -20,17 +20,17 @@ module.exports = {
     },
     ropsten: {
       url: `https://ropsten.infura.io/v3/${infuraId}`,
-      accounts: [process.env.privateKey]
+      accounts: [privateKey]
     },
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${infuraId}`,
-      accounts: [process.env.privateKey]
+      accounts: [privateKey]
     },
     kovan: {
       url: `https://kovan.infura.io/v3/${infuraId}`,
-      accounts: [process.env.privateKey]
+      accounts: [privateKey]
     }
   },
-  solidity: "0.8.3",
+  solidity: "0.8.11",
 };
 

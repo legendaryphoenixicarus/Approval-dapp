@@ -8,6 +8,7 @@ const fs = require('fs');
 
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
+  const CAPL = "0xe6264813D43Ef97cCE76E66be873040eBe9be09A";
 
   console.log(
     "Deploying contracts with the account:",
@@ -15,13 +16,14 @@ async function main() {
   );
   
   const ConsensusRugPull = await hre.ethers.getContractFactory("ConsensusRugPull");
-  const consensusRugPull = await ConsensusRugPull.deploy();
+  const consensusRugPull = await ConsensusRugPull.deploy(CAPL);
   await consensusRugPull.deployed();
 
   console.log("ConsensusRugPull deployed to:", consensusRugPull.address);
 
   let config = `
   export const consensusRugPull = "${consensusRugPull.address}"
+  export const deskToken = "0xe6264813D43Ef97cCE76E66be873040eBe9be09A" // kovan CAPL
   `;
 
   let data = JSON.stringify(config);
