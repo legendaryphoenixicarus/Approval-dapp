@@ -5,7 +5,8 @@ import { deskToken, consensusRugPull } from './config';
 
 // eslint-disable-next-line no-undef
 const MAX_UINT = "115792089237316195423570985008687907853269984665640564039457584007913129639935";
-const chainId = 42;
+const CHAIN_ID = 42;
+
 let provider;
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
       try {
         await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-          params: [{ chainId: ethers.utils.hexlify(chainId) }],
+          params: [{ chainId: ethers.utils.hexlify(CHAIN_ID) }],
         });
       } catch (error) {
         console.error(error);
+        window.location.reload();
       }
     }
 
